@@ -14,8 +14,18 @@ class Book(models.Model):
         default=BookStatus.ACTIVE
     )
 
+class Profile(models.Model):
+    user = models.OneToOneField('auth.User', on_delete=models.CASCADE)
+    bio = models.TextField()
+
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+
 class Product(models.Model):
-    name = models.CharField(max_length=255)
-    price = models.DecimalField(max_digits=8, decimal_places=2)
-    is_active = models.BooleanField(default=True)
-    created_at = models.DateTimeField(auto_now_add=True)
+    name = models.CharField(max_length=100)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
+    tags = models.ManyToManyField('Tag', related_name='products')
+
+class Tag(models.Model):
+    name = models.CharField(max_length=50)
