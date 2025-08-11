@@ -5,6 +5,10 @@ class BookStatus(models.TextChoices):
     ACTIVE = 1, 'Active'
     INACTIVE = 2, 'Inactive'
     ARCHIVED = 3, 'Archived'
+class TagStatus(models.TextChoices):
+    ACTIVE = 1, 'Active'
+    INACTIVE = 2, 'Inactive'
+    ARCHIVED = 3, 'Archived'
 class Book(models.Model):
     title = models.CharField(max_length=100)
     author = models.CharField(max_length=100)
@@ -29,3 +33,7 @@ class Product(models.Model):
 
 class Tag(models.Model):
     name = models.CharField(max_length=50)
+     status = models.IntegerField(
+        choices=TagStatus.choices,
+        default=TagStatus.ACTIVE
+    )
