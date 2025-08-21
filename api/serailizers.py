@@ -12,9 +12,11 @@ class ProfileSerializers(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields = ['id', 'bio', 'user']
+        read_only_fields = ['user']
         
 class CategorySerializers(serializers.ModelSerializer):
     product_count = serializers.IntegerField(source='products.count', read_only=True)
     class Meta:
         model = Category
         fields = ['id', 'name', 'product_count']
+        
