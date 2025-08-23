@@ -6,6 +6,9 @@ class UserSerializers(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = '__all__'
+        
+        
+        
 
 class ProfileSerializers(serializers.ModelSerializer):
     user = UserSerializers(read_only=True)
