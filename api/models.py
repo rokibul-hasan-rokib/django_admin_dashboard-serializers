@@ -31,9 +31,3 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
     tags = models.ManyToManyField('Tag', related_name='products')
 
-class Tag(models.Model):
-    name = models.CharField(max_length=50)
-    status = models.IntegerField(
-        choices=TagStatus.choices,
-        default=TagStatus.ACTIVE
-    )
