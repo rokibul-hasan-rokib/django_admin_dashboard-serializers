@@ -1,6 +1,7 @@
 from django.db import models
 
 
+
 class BookStatus(models.TextChoices):
     ACTIVE = 1, 'Active'
     INACTIVE = 2, 'Inactive'
